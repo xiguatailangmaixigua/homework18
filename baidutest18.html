@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				width:100%;
+			}
+		    .box{
+		    	width: 600px;
+		    	margin:0 auto;
+		    	padding-bottom: 60px;
+		    }
+			button input{
+				float: left;
+				margin:10px 30px 10px 30px;
+			}
+			.showelement{
+				background-color: red;
+				width:30px;
+				height:30px;
+				float:left;
+				text-align: center;
+				line-height: 30px;
+				margin-left: 4px;
+				
+				
+			}
+			#showbox{
+				width: 600px;
+				height: 30px;
+				margin-top:50px;
+				margin:0 auto;
+				border-top:solid;
+				border-bottom: solid;
+				border-top-color: #333333;
+				border-bottom-color: #333333;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<input id="inputtext"type="text">
+			<button id="leftin">左侧入</button>
+			<button id="rightin">右侧入</button>
+			<button id="leftout">左侧出</button>
+			<button id="rightout">右侧出</button>
+		</div>
+		<div id="showbox" >
+		</div>
+		<script>
+		    var showbox = document.getElementById("showbox");
+			var leftin = document.getElementById("leftin");
+			leftin.addEventListener("click",function(){
+				 var div = document.createElement("div");
+				showbox.insertBefore(div,showbox.firstChild);
+				var text = document.getElementById("inputtext").value;
+				var textNode = document.createTextNode(text);
+				div.appendChild(textNode);
+				div.className="showelement";
+				
+			});
+			var rightin = document.getElementById("rightin");
+			rightin.addEventListener("click",function(){
+				 var div = document.createElement("div");
+				showbox.appendChild(div);
+				var text = document.getElementById("inputtext").value;
+				var textNode = document.createTextNode(text);
+				div.appendChild(textNode);
+				div.className="showelement";
+			});
+            var leftout= document.getElementById("leftout");
+            leftout.addEventListener("click",function(){
+            	showbox.removeChild(showbox.firstChild); 
+            });
+            var rightout = document.getElementById("rightout");
+            rightout.addEventListener("click",function(){
+            	showbox.removeChild(showbox.lastChild);
+            });
+		</script>
+	</body>
+</html>
